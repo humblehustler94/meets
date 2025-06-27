@@ -1,0 +1,79 @@
+{
+  "C:\\Users\\flore\\meets\\auth-server\\serverless.yml": {
+    "versionFramework": "4.17.1",
+    "servicePath": "C:\\Users\\flore\\meets\\auth-server\\serverless.yml",
+    "serviceConfigFileName": "serverless.yml",
+    "service": {
+      "service": "auth-server",
+      "provider": {
+        "name": "aws",
+        "runtime": "nodejs18.x",
+        "region": "eu-central-1",
+        "timeout": 30,
+        "environment": {
+          "CLIENT_ID": "616838610985-qglm0iec3ib4qfi4ec298hhq2p96vndt.apps.googleusercontent.com",
+          "CLIENT_SECRET": "<REDACTED>",
+          "CALENDAR_ID": "fullstackwebdev@careerfoundry.com",
+          "IS_LOCAL": "true"
+        },
+        "stage": "dev",
+        "versionFunctions": true
+      },
+      "functions": {
+        "getAuthURL": {
+          "handler": "handler.getAuthURL",
+          "events": [
+            {
+              "http": {
+                "path": "api/get-auth-url",
+                "method": "get"
+              }
+            }
+          ],
+          "name": "auth-server-dev-getAuthURL"
+        }
+      }
+    },
+    "provider": {
+      "name": "aws",
+      "runtime": "nodejs18.x",
+      "region": "eu-central-1",
+      "timeout": 30,
+      "environment": {
+        "CLIENT_ID": "616838610985-qglm0iec3ib4qfi4ec298hhq2p96vndt.apps.googleusercontent.com",
+        "CLIENT_SECRET": "<REDACTED>",
+        "CALENDAR_ID": "fullstackwebdev@careerfoundry.com",
+        "IS_LOCAL": "true"
+      },
+      "stage": "dev",
+      "versionFunctions": true
+    },
+    "dashboard": {
+      "isEnabledForService": false,
+      "requiredAuthentication": true,
+      "orgFeaturesInUse": null,
+      "orgObservabilityIntegrations": null,
+      "serviceAppId": null,
+      "serviceProvider": null,
+      "instanceParameters": null
+    },
+    "serviceRawFile": "# This should be at the top of your file\r\nservice: auth-server\r\n\r\nprovider:\r\n  name: aws\r\n  runtime: nodejs18.x\r\n  region: eu-central-1\r\n  timeout: 30 #optional, in seconds, default is 6\r\n  environment:\r\n    CLIENT_ID: ${file(config.json):CLIENT_ID}\r\n    CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}\r\n    CALENDAR_ID: ${file(config.json):CALENDAR_ID}\r\n\r\n# Add this entire functions block below the provider section\r\nfunctions:\r\n  getAuthURL:\r\n    handler: handler.getAuthURL\r\n    events:\r\n      - http:\r\n          path: api/get-auth-url\r\n          method: get",
+    "command": [
+      "invoke",
+      "local"
+    ],
+    "options": {
+      "function": "getAuthURL"
+    },
+    "orgId": "d5ef135b-c04e-4557-949e-bef6350989de",
+    "orgName": "humblehustler94",
+    "userId": "vWn9Mxfw9dwQnlc3K2",
+    "userName": "humblehustler94",
+    "serviceProviderAwsAccountId": "130930645011",
+    "serviceProviderAwsCfStackId": null,
+    "serviceProviderAwsCfStackCreated": null,
+    "serviceProviderAwsCfStackUpdated": null,
+    "serviceProviderAwsCfStackStatus": null,
+    "serviceProviderAwsCfStackOutputs": null
+  }
+}
