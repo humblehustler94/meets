@@ -1,0 +1,21 @@
+# This should be at the top of your file
+service: auth-server
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: eu-central-1
+  timeout: 30 #optional, in seconds, default is 6
+  environment:
+    CLIENT_ID: ${file(config.json):CLIENT_ID}
+    CLIENT_SECRET: ${file(config.json):CLIENT_SECRET}
+    CALENDAR_ID: ${file(config.json):CALENDAR_ID}
+
+# Add this entire functions block below the provider section
+functions:
+  getAuthURL:
+    handler: handler.getAuthURL
+    events:
+      - http:
+          path: api/get-auth-url
+          method: get
